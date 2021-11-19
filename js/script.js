@@ -21,3 +21,25 @@ function loadQuizzList(){
 }
 
 loadQuizzList();
+
+const urlChecker = (url) => {
+    try {
+      new URL(url);
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+    return true;
+}
+
+const quizzTitleChecker = (quizzTitle) => {
+      return quizzTitle.length >= 20 && quizzTitle.length <= 65 ? true : false;
+}
+
+const hexColorChecker = (color) => {
+    const regExp = /^#([0-9A-F]{3}){1,2}$/i;
+    
+    return regExp.test(color);
+}
+
+
