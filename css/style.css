@@ -1,17 +1,20 @@
 body {
     background: #FAFAFA;
 }
-h1 {
+h2 {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-weight: bold;
     color: #000;
 }
-h2 {
+h3 {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     color: #fff;
     font-weight: normal;
+}
+.none {
+    display: none;
 }
 .flex-center {
     text-align: center;
@@ -24,6 +27,8 @@ h2 {
     height: 70px;
     background-color: #EC362D;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    position: relative;
+    z-index: 1;
 }
 
 .title {
@@ -36,6 +41,8 @@ h2 {
 .container {
     width: 70vw;
     margin: 80px auto 0 auto;
+    max-width: 900px;
+    max-height: 900px;
 }
 
 .create {
@@ -121,13 +128,105 @@ h2 {
     margin-bottom: 10px;
 }
 
-.quizz-card h2 {
+.quizz-card h3 {
     width: 320px;
     position: absolute;
     bottom: 10px;
     left: 10px;
 }
 
+.quizz-page, .questions-list {
+    margin: 0 auto;
+}
+
+.banner-quizz {
+    width: 100vw;
+    height: 220px;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url(https://s3-alpha-sig.figma.com/img/60f6/4bae/cb4c4e815fc36d9f0f0579a657241eba?Expires=1638144000&Signature=cqsR1gZIngLBQPZ6LeL~vWnXsiDVfmQfBKYm6yHFxTCpkJNI4l~uNmpM4KredvdqP4M4T8h2xvw-kEkW91z3Ii8L~jTr-AIxLemInFf6fpM1-9tG2vQjPhlIeSgyhGfLiR5p53jnvg~uRzAgjshXhSaSxCjbyCtFzBmvzLYS8Zq0GxXw2MKCq3xRg18DnPy~qpJTrPQnSwp-h1dEFiVC5vcriL42Rn4qCtaKpDlf8KPGTVZO8WmsDKlW-IzcZhbLaRpc3HacjA9EELnZR8nZzw22qHuROyoyhKmVGM1OU2OF9Nej~Y~p5eFFXWzcLQ0VjG-0dApwkzDBqnpchxoF8w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA);;
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 0;
+}
+
+.banner-quizz h1 {
+    font-weight: normal;
+}
+
+.questions {
+    width: 100%;
+    height: 820px;
+    background-color: #fff;
+    margin: 40px auto 0 auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    padding: 30px 40px;
+    box-sizing: border-box;
+}
+
+.question {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr;
+    gap: 20px 0;
+}
+
+.question-title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.color0 {
+    background-color: #434CA0;
+}
+
+.color1 {
+    background-color: #A0438D;
+}
+
+.question-title h2 {
+    color: #fff;
+}
+
+.answers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px 15px;
+}
+
+.answer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.answer-image {
+    width: 100%;
+    height: 100%;
+    background-image: url(https://s3-alpha-sig.figma.com/img/7212/aa92/e0229a2cb5aea15ab3fd2b5d36cb9a60?Expires=1638144000&Signature=E-djO4UvnSNyGrh4porzOF3~ateDCWBO7F03TgYzJFjSa02ZWO-YximHyOVzp2mV87abw44lrUzQjKrJ44Acd-S2xSfkrtbDvTQN3-QiLDB-fJH8ml48RD6RD-X7V9oKUBg7NFaZzmq~V3ra~iewSHFKNFS9d5KUwQanKvcqYIYKgmkEaePHMifpKIJ3FSjXHeV1JTP7VLnuFKIM5qbwhCJVlYJsv29HmJDft6BpbXsss0atSrtN2VdLkr4vnnbeGl9luFqV0MtM3djI5FjBhy3FUGrNvU2MPEUVEfChpLh1zcER1JBAsXC8iW3fELbPU0WwN2P9A1l5Ob5fSenSIA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA);
+    background-size: cover;
+    background-position: center;
+}
+.answer-text {
+    padding: 10px 0;
+}
+.answer-text h3 {
+    color: #000;
+    font-weight: bold;
+}
 
 
 
@@ -142,16 +241,23 @@ h2 {
     .quizz-card {
         width: 95vw;
     }
-    .quizz-card h2 {
+    .quizz-card h3 {
         width: 50%;
     }
 }
 
 @media (max-width: 750px){
-    .quizz-card h2 {
+    .quizz-card h3 {
         width: 70%;
     }
     .quizz-card {
         background-position: 50%;
+    }
+    .questions {
+        padding: 30px 10px;
+        margin: 40px 0 0 0;
+    }
+    .question-title h2 {
+        padding: 0 20px;
     }
 }

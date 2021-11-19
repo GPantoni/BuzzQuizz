@@ -13,69 +13,68 @@
 </head>
 <body>
     <header class="header flex-center">
-        <p class="title">BuzzQuizz</p>
+        <h1 class="title" onclick="initial()">BuzzQuizz</h1>
     </header>
-    <main class="container">
-        <section class="create flex-center">
+    <section class="container initial-page none">
+        <div class="create flex-center">
             <div>
                 <p>Você não criou nenhum quizz ainda :(</p>
                 <button class="create-btn">Criar Quizz</button>
             </div>
-        </section>
-        <section class="list-user">
+        </div>
+        <div class="list-user">
             <div class="section-title">
-                <h1>Seus Quizzes</h1>
+                <h2>Seus Quizzes</h2>
                 <div class="create-small-btn"><img src="./assets/create.svg" alt=""></div>
             </div>
             <ul class="quizzes-list-user">
                 <li class="quizz">
                     <div class="quizz-card">
-                        <h2>Acerte os personagens corretos dos Simpsons e prove seu amor!</h2>
-                    </div>
-                </li>
-                <li class="quizz">
-                    <div class="quizz-card">
-                        <h2>Acerte os personagens corretos dos Simpsons e prove seu amor!</h2>
-                    </div>
-                </li>
-                <li class="quizz">
-                    <div class="quizz-card">
-                        <h2>Acerte os personagens corretos dos Simpsons e prove seu amor!</h2>
+                        <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
                     </div>
                 </li>
             </ul>
-        </section>
-        <section class="list">
-            <h1>Todos os Quizzes</h1>
+        </div>
+        <div class="list">
+            <h2>Todos os Quizzes</h2>
             <ul class="quizzes-list">
                 <li class="quizz">
                     <div class="quizz-card">
-                        <h2>Acerte os personagens corretos dos Simpsons e prove seu amor!</h2>
-                    </div>
-                </li>
-                <li class="quizz">
-                    <div class="quizz-card">
-                        <h2>Acerte os personagens corretos dos Simpsons e prove seu amor!</h2>
-                    </div>
-                </li>
-                <li class="quizz">
-                    <div class="quizz-card">
-                        <h2>Acerte os personagens corretos dos Simpsons e prove seu amor!</h2>
-                    </div>
-                </li>
-                <li class="quizz">
-                    <div class="quizz-card">
-                        <h2>Acerte os personagens corretos dos Simpsons e prove seu amor!</h2>
-                    </div>
-                </li>
-                <li class="quizz">
-                    <div class="quizz-card">
-                        <h2>Acerte os personagens corretos dos Simpsons e prove seu amor!</h2>
+                        <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
                     </div>
                 </li>
             </ul>
-        </section>
-    </main>
+        </div>
+    </section>
+    <section class="quizz-page none">
+        <div class="banner-quizz"><h1>O quão Potterhead é você?</h1></div>
+        <div class="container questions-list">
+            <article class="questions">
+                <div class="question">
+                    <div class="question-title color0"><h2>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</h2></div>
+                    <ul class="answers">
+                        <li class="answer">
+                            <div class="answer-image"></div>
+                            <div class="answer-text"><h3>Gatíneo</h3></div>
+                        </li>
+                        <li class="answer">
+                            <div class="answer-image"></div>
+                            <div class="answer-text"><h3>Gatíneo</h3></div>
+                        </li>
+                        <li class="answer">
+                            <div class="answer-image"></div>
+                            <div class="answer-text"><h3>Gatíneo</h3></div>
+                        </li>
+                        <li class="answer">
+                            <div class="answer-image"></div>
+                            <div class="answer-text"><h3>Gatíneo</h3></div>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </section>
+
         
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./js/script.js"></script>
