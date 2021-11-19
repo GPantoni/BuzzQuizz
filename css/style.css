@@ -68,18 +68,42 @@ h2 {
 }
 .create-btn:hover {
     cursor: pointer;
-    background-color: #f3f3f3;
+    background-color: #EC362D;
+    color: #fff;
+}
+
+.create-small-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+}
+
+.create-small-btn:hover {
+    cursor: pointer;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
 }
 
 .list {
     margin-top: 50px;
 }
 
-.list-user h1 {
-    margin-bottom: 15px;
+.list-user {
+    display: block;
 }
 
 .quizzes-list {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.quizzes-list-user {
     margin-top: 15px;
     display: flex;
     flex-wrap: wrap;
@@ -89,8 +113,7 @@ h2 {
 .quizz-card {
     width: 340px;
     height: 180px;
-    background-color: rosybrown;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(../assets/teste.jpg);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65%, #000000 100%), url(../assets/teste.jpg);
     background-size: cover;
     position: relative;
     border-radius: 5px;
@@ -102,4 +125,32 @@ h2 {
     position: absolute;
     bottom: 10px;
     left: 10px;
+}
+
+
+
+
+@media (max-width: 1100px){
+    .container {
+        width: 95vw;
+        margin: 30px auto 0 auto;
+    }
+    .create div {
+        width: 70%;
+    }
+    .quizz-card {
+        width: 95vw;
+    }
+    .quizz-card h2 {
+        width: 50%;
+    }
+}
+
+@media (max-width: 750px){
+    .quizz-card h2 {
+        width: 70%;
+    }
+    .quizz-card {
+        background-position: 50%;
+    }
 }
