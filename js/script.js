@@ -59,7 +59,31 @@ let elementAnswerQuizz = `
 
                 ///// LI's de acordo com a quantidade de respostas do objeto
 
-            </ul>
-        </div>
-    </article>
-`;
+                </ul>
+                </div>
+                </article>
+                `;
+                
+const urlChecker = (url) => {
+    try {
+        new URL(url);
+    } catch (e) {
+        console.error(e);
+        return false;
+    }
+    return true;
+}
+
+const quizzTitleChecker = (quizzTitle) => {
+    return quizzTitle.length >= 20 && quizzTitle.length <= 65 ? true : false;
+}
+
+const hexColorChecker = (color) => {
+    const regExp = /^#([0-9A-F]{3}){1,2}$/i;
+
+    return regExp.test(color);
+}
+
+
+// <<<<<<< HEAD
+// >>>>>>> 1090d97baedb9f33c0caf39a6de9811783aa256f
