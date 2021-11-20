@@ -83,7 +83,3 @@ const hexColorChecker = (color) => {
 
     return regExp.test(color);
 }
-
-
-// <<<<<<< HEAD
-// >>>>>>> 1090d97baedb9f33c0caf39a6de9811783aa256f
