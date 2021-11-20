@@ -1,4 +1,5 @@
 let objects = [];
+let bannerQuizz, questionsList, elementAnswerQuizz, elementQuestionsListArticle, elementAnswersLi;    
 
 function loadQuizzList(){    
     const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
@@ -16,9 +17,9 @@ function loadQuizzList(){
                 idsCheck.push(i);
                 quizzesList.innerHTML += `
                 <li class="quizz" onclick="expandQuizz(this)">
-                <div class="quizz-card">
-                <h3>${reply.data[i].title}</h3>
-                </div>
+                    <div class="quizz-card">
+                        <h3>${reply.data[i].title}</h3>
+                    </div>
                 </li>
                 `;
             }
@@ -40,30 +41,46 @@ function expandQuizz(element){
             break;
         }
     }
-    //Já temos o objeto no tempObject
-    //Resta exibir a página do quizz e esconder a anterior.
-    document.querySelector(".quizz-page").classList.remove("none");
-    document.querySelector(".initial-page").classList.add("none");
+    document.querySelector(".quizz-page").innerHTML = '';
+    document.querySelector(".initial-page").classList.add("hide");
+    document.querySelector(".quizz-page").classList.remove("hide");
+
+    bannerQuizz = `<div class="banner-quizz" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url(${tempObject.image})"><h1>${tempObject.title}</h1></div>` ;
+    questionsList = `<div class="container questions-list"></div>`;
+    
+    elementAnswerQuizz = `
+    <article class="questions"></article>
+    `;
+
+    function fillQuestionsAndAnswers(){
+        document.querySelector(".quizz-page").innerHTML = bannerQuizz + questionsList;
+        for(let i = 0; i < tempObject.questions.length; i++){
+            document.querySelector(".questions-list").innerHTML += `${elementAnswerQuizz}`;
+        }
+        for(let i = 0; i < tempObject.questions.length; i++){
+            elementQuestionsListArticle = `
+                <div class="question">
+                    <div class="question-title" style="background-color: ${tempObject.questions[i].color}"}"><h2>${tempObject.questions[i].title}</h2></div>
+                    <ul class="answers"></ul>
+                </div>
+            `;
+            document.querySelector(".questions-list").children[i].innerHTML += elementQuestionsListArticle;
+        }
+        for(let i = 0; i < tempObject.questions.length; i++){
+            for(let j = 0; j < tempObject.questions[i].answers.length; j++){
+                elementAnswersLi = `
+                <li class="answer">
+                    <div class="answer-image" style="background-image: url(${tempObject.questions[i].answers[j].image})"></div>
+                    <div class="answer-text"><h3>${tempObject.questions[i].answers[j].text}</h3></div>
+                </li>
+                `;
+                document.querySelector(".questions-list").children[i].children[0].children[1].innerHTML += elementAnswersLi;
+            }
+        }
+    }
+    fillQuestionsAndAnswers();
 }
 
-let elementAnswerQuizz = `
-    <article class="questions">
-        <div class="question">
-            <div class="question-title color0"><h2>|>>>>>|titulo_da_pergunta_aqui|<<<<<|</h2></div>
-
-            <ul class="answers">
-                <li class="answer">
-                    <div class="answer-image">|>>>>>|image_deve_ser_trocada_nos_estilos|<<<<<|</div>
-                    <div class="answer-text"><h3>|>>>>>|resposta_aqui}</h3></div>
-                </li>
-
-                ///// LI's de acordo com a quantidade de respostas do objeto
-
-                </ul>
-                </div>
-                </article>
-                `;
-                
 const urlChecker = (url) => {
     try {
         new URL(url);
