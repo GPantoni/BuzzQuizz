@@ -76,65 +76,73 @@
     </section>
 
 
-    <section class="quizz-maker">
-        <div class="quizz-definition">
+    <section class="container quizz-maker">
+        <div class="quizz-definition flex-center none">
             <h1>Comece pelo começo</h1>
-            <input type="text" placeholder="Título do seu quizz">
-            <input type="text" placeholder="URL da imagem do seu quizz">
-            <input type="number" placeholder="Quantidade de perguntas do quizz">
-            <input type="number" placeholder="Quantidade de níveis do quizz">
+            <div class="box flex-center">
+                <input type="text" placeholder="Título do seu quizz">
+                <input type="text" placeholder="URL da imagem do seu quizz">
+                <input type="number" placeholder="Quantidade de perguntas do quizz">
+                <input type="number" placeholder="Quantidade de níveis do quizz">
+            </div>
             <button>Prosseguir pra criar perguntas</button>
         </div>
-        <div class="quizz-questions none">
+        <div class="quizz-questions flex-center">
             <h1>Crie suas perguntas</h1>
-            <div    class="question">
-                <h2>Pergunta 1</h2>
-                <input type="text" placeholder="Texto da pergunta">
-                <input type="text" placeholder="Cor de fundo da pergunta">
-                <h2>Reposta correta</h2>
-                <input type="text" placeholder="Resposta correta">
-                <input type="url" placeholder="URL da imagem">
-                <h2>Respostas incorretas</h2>
-                <input type="text" placeholder="Resposta incorreta 1">
-                <input type="url" placeholder="URL da imagem 1">
-                <input type="text" placeholder="Resposta incorreta 2">
-                <input type="url" placeholder="URL da imagem 2">
-                <input type="text" placeholder="Resposta incorreta 3">
-                <input type="url" placeholder="URL da imagem 3">
+            <div class="box flex-left">
+                <div    class="question-maker">
+                    <h2>Pergunta 1</h2>
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
+                    <h2>Reposta correta</h2>
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="url" placeholder="URL da imagem">
+                    <h2>Respostas incorretas</h2>
+                    <input type="text" placeholder="Resposta incorreta 1">
+                    <input type="url" placeholder="URL da imagem 1">
+                    <input type="text" placeholder="Resposta incorreta 2">
+                    <input type="url" placeholder="URL da imagem 2">
+                    <input type="text" placeholder="Resposta incorreta 3">
+                    <input type="url" placeholder="URL da imagem 3">
+                </div>
             </div>
-            <div    class="question">
-                <h2>Pergunta 2</h2>
-                <input type="text" placeholder="Texto da pergunta">
-                <input type="text" placeholder="Cor de fundo da pergunta">
-                <h2>Reposta correta</h2>
-                <input type="text" placeholder="Resposta correta">
-                <input type="url" placeholder="URL da imagem">
-                <h2>Respostas incorretas</h2>
-                <input type="text" placeholder="Resposta incorreta 1">
-                <input type="url" placeholder="URL da imagem 1">
-                <input type="text" placeholder="Resposta incorreta 2">
-                <input type="url" placeholder="URL da imagem 2">
-                <input type="text" placeholder="Resposta incorreta 3">
-                <input type="url" placeholder="URL da imagem 3">
+            <div class="box flex-left">
+                <div    class="question-maker">
+                    <h2>Pergunta 2</h2>
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
+                    <h2>Reposta correta</h2>
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="url" placeholder="URL da imagem">
+                    <h2>Respostas incorretas</h2>
+                    <input type="text" placeholder="Resposta incorreta 1">
+                    <input type="url" placeholder="URL da imagem 1">
+                    <input type="text" placeholder="Resposta incorreta 2">
+                    <input type="url" placeholder="URL da imagem 2">
+                    <input type="text" placeholder="Resposta incorreta 3">
+                    <input type="url" placeholder="URL da imagem 3">
+                </div>
             </div>
-            <div    class="question">
-                <h2>Pergunta 3</h2>
-                <input type="text" placeholder="Texto da pergunta">
-                <input type="text" placeholder="Cor de fundo da pergunta">
-                <h2>Reposta correta</h2>
-                <input type="text" placeholder="Resposta correta">
-                <input type="url" placeholder="URL da imagem">
-                <h2>Respostas incorretas</h2>
-                <input type="text" placeholder="Resposta incorreta 1">
-                <input type="url" placeholder="URL da imagem 1">
-                <input type="text" placeholder="Resposta incorreta 2">
-                <input type="url" placeholder="URL da imagem 2">
-                <input type="text" placeholder="Resposta incorreta 3">
-                <input type="url" placeholder="URL da imagem 3">
+            <div class="box flex-left">
+                <div    class="question-maker">
+                    <h2>Pergunta 3</h2>
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
+                    <h2>Reposta correta</h2>
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="url" placeholder="URL da imagem">
+                    <h2>Respostas incorretas</h2>
+                    <input type="text" placeholder="Resposta incorreta 1">
+                    <input type="url" placeholder="URL da imagem 1">
+                    <input type="text" placeholder="Resposta incorreta 2">
+                    <input type="url" placeholder="URL da imagem 2">
+                    <input type="text" placeholder="Resposta incorreta 3">
+                    <input type="url" placeholder="URL da imagem 3">
+                </div>
             </div>
             <button>Prosseguirpra criar níveis</button>
         </div>
-        <div class="quizz-levels none">
+        <div class="quizz-levels flex-center none">
             <h1>Agora, decida os níveis</h1>
             <div class="level">
                 <h2>Nível 1</h2>
@@ -152,7 +160,7 @@
             </div>
             <button>Finalizar Quizz</button>
         </div>
-        <div class="quizz-finished none">
+        <div class="quizz-finished flex-center none">
             <h1>Seu quizz está pronto!</h1>
             <!-- COLOCAR O QUIZZ AQUI -->
             <button>Acessar Quizz</button>

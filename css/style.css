@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background: #FAFAFA;
 }
@@ -12,9 +16,6 @@ h3 {
     font-size: 20px;
     color: #fff;
     font-weight: normal;
-}
-.none {
-    display: none;
 }
 .flex-center {
     text-align: center;
@@ -226,6 +227,100 @@ h3 {
 .answer-text h3 {
     color: #000;
     font-weight: bold;
+}
+
+.quizz-maker h1 {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 23px;
+    line-height: 27px;
+}
+
+.quizz-maker .box {
+    width: 600px;
+
+    gap: 9px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+
+.quizz-maker button {
+    width: 360px;
+    height: 54px;
+
+    border-radius: 15px;
+
+    background: #EC362D;
+    color: #FFFFFF;
+}
+
+.box input {
+    width: 564px;
+    height: 46px;
+
+    padding-left: 23.16px;
+
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 19px;
+    line-height: 22px;
+
+    color: #000000;
+}
+
+.box input::placeholder {
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 19px;
+    line-height: 22px;
+
+    color: #BABABA;
+}
+
+.quizz-definition .box {
+    margin: 27px auto 85px auto;
+    padding: 21px 20px 24px 16px;
+}
+
+.flex-left {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+
+    text-align: initial;
+}
+
+.quizz-questions {
+    gap: 24px;
+}
+
+.quizz-questions .box {
+    padding: 27px 18px;
+}
+
+.question-maker {
+    display: flex;
+    flex-flow: column;
+    gap: 14px;
+}
+
+.quizz-questions h2 {
+    margin: 20px 0 0 0;
+}
+
+.quizz-questions .box h2:first-child{
+    margin: 0;
+}
+
+.none {
+    display: none;
 }
 
 
