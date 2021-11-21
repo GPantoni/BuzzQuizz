@@ -17,8 +17,9 @@ h3 {
     color: #fff;
     font-weight: normal;
 }
+
 .hide {
-    display: none;
+    display: none !important;
 }
 
 .flex-center {
@@ -41,13 +42,12 @@ h3 {
     color: #fff;
     font-weight: bold;
     font-size: 38px;
+    cursor: pointer;
 }
 
 .container {
     width: 70vw;
     margin: 80px auto 0 auto;
-    max-width: 900px;
-    max-height: 900px;
 }
 
 .create {
@@ -146,9 +146,12 @@ h3 {
 .quizz-page, .questions-list {
     margin: 0 auto;
 }
+.questions-list {
+    max-width: 900px;
+    max-height: 900px;
+}
 
 .banner-quizz {
-    width: 100vw;
     height: 220px;
     background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url(https://s3-alpha-sig.figma.com/img/60f6/4bae/cb4c4e815fc36d9f0f0579a657241eba?Expires=1638144000&Signature=cqsR1gZIngLBQPZ6LeL~vWnXsiDVfmQfBKYm6yHFxTCpkJNI4l~uNmpM4KredvdqP4M4T8h2xvw-kEkW91z3Ii8L~jTr-AIxLemInFf6fpM1-9tG2vQjPhlIeSgyhGfLiR5p53jnvg~uRzAgjshXhSaSxCjbyCtFzBmvzLYS8Zq0GxXw2MKCq3xRg18DnPy~qpJTrPQnSwp-h1dEFiVC5vcriL42Rn4qCtaKpDlf8KPGTVZO8WmsDKlW-IzcZhbLaRpc3HacjA9EELnZR8nZzw22qHuROyoyhKmVGM1OU2OF9Nej~Y~p5eFFXWzcLQ0VjG-0dApwkzDBqnpchxoF8w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA);;
     background-position: center;
@@ -181,7 +184,7 @@ h3 {
     height: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 3fr;
+    grid-template-rows: 1fr 4fr;
     gap: 20px 0;
 }
 
@@ -238,7 +241,7 @@ h3 {
 }
 
 .quizz-maker h1 {
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 23px;
@@ -273,7 +276,7 @@ h3 {
     border: 1px solid #D1D1D1;
     border-radius: 5px;
 
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
     font-style: italic;
     font-weight: normal;
     font-size: 19px;
@@ -283,7 +286,7 @@ h3 {
 }
 
 .box input::placeholder {
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
     font-style: italic;
     font-weight: normal;
     font-size: 19px;
