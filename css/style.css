@@ -332,7 +332,17 @@ h3 {
     margin: 0;
 }
 
+.open-form {
+    /* width: auto; */
+    display: flex;
+    justify-content: space-between;
+}
 
+.closed-form {
+    height: 60px;
+    
+    overflow-y: hidden;
+}
 
 
 

@@ -167,6 +167,12 @@ const hexColorChecker = (color) => {
     return regExp.test(color);
 }
 
+function openForm(expandButton) {
+    let form = expandButton;
+    
+    form.parentNode.parentNode.parentNode.classList.toggle('closed-form');
+}
+
 function quizzDefinition() {
     const quizzDefinitionPage = document.querySelector('.quizz-definition');
     const quizzQuestionsPage = document.querySelector('.quizz-questions');
@@ -182,6 +188,33 @@ function quizzDefinition() {
     if(numberOfLevels < 2){alert('minimun 2 levels')};
 
     if(quizz.title !== '' && quizz.image !== '' && numberOfQuestions >= 3 && numberOfLevels >= 2) {
+        for(let i = 1; i < numberOfQuestions; i++) {
+            quizzQuestionsPage.innerHTML += `
+            <div class="box flex-left closed-form">
+                <div    class="question-maker">
+                    <div class="open-form">
+                        <h2>Pergunta ${i+1}</h2>
+                        <ion-icon name="create-outline" onclick="openForm(this)"></ion-icon>
+                    </div>
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
+                    <h2>Reposta correta</h2>
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="url" placeholder="URL da imagem">
+                    <h2>Respostas incorretas</h2>
+                    <input type="text" placeholder="Resposta incorreta 1">
+                    <input type="url" placeholder="URL da imagem 1">
+                    <input type="text" placeholder="Resposta incorreta 2">
+                    <input type="url" placeholder="URL da imagem 2">
+                    <input type="text" placeholder="Resposta incorreta 3">
+                    <input type="url" placeholder="URL da imagem 3">
+                </div>
+            </div>
+            `
+        }
+        
+        quizzQuestionsPage.innerHTML += `<button>Prosseguir pra criar níveis</button>`
+        
         quizzDefinitionPage.classList.add('hide');
         quizzQuestionsPage.classList.remove('hide');
     }
