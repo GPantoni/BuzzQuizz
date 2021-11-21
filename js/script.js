@@ -1,5 +1,21 @@
 let objects = [];
-let bannerQuizz, questionsList, elementAnswerQuizz, elementQuestionsListArticle, elementAnswersLi;    
+let bannerQuizz, questionsList, elementAnswerQuizz, elementQuestionsListArticle, elementAnswersLi;
+
+
+/* ============ puxando quizzes pelo ID para teste ============ */
+/* const testando = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/1");
+testando.then(postQuizz);
+
+function postQuizz(resposta){
+    console.log(resposta.data);
+    let objeto = resposta.data;
+    
+    //const testesupremo = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", testao);
+    //testesupremo.then(dale);
+    //function dale(resposta){
+    //    console.log("DEU BOM PORRA");
+    //}
+} */
 
 function loadQuizzList(){    
     const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
@@ -28,6 +44,9 @@ function loadQuizzList(){
         for(let j = count, i = 0; j < document.querySelector(".quizzes-list").children.length; j++, i++){
             quizzesList.children[j].children[0].style.backgroundImage = `linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65%, #000000 100%), url(${reply.data[idsCheck[i]].image})`;
         }
+    }
+    if(document.querySelector(".quizzes-list-user").children.length === 0){
+        document.querySelector(".quizzes-list-user").parentNode.classList.add("hide");
     }
 }
 loadQuizzList();
@@ -77,9 +96,53 @@ function expandQuizz(element){
                 document.querySelector(".questions-list").children[i].children[0].children[1].innerHTML += elementAnswersLi;
             }
         }
+        let listQuestions = document.querySelector(".questions-list");
+        let testTemp = [];
+
+        for(let i = 0; i < listQuestions.children.length; i++){ // percorre todas as perguntas
+            
+            const lengthAnswers = listQuestions.children[i].children[0].children[1].children.length;
+            for(let j = 0; j < listQuestions.children[i].children[0].children[1].children.length; j++){
+                testTemp.push(listQuestions.children[i].children[0].children[1].children[j]);
+            }
+
+            listQuestions.children[i].children[0].children[1].innerHTML = "";
+            testTemp.sort(comparador);
+            
+            for(let j = 0; j < lengthAnswers; j++){
+                listQuestions.children[i].children[0].children[1].innerHTML += testTemp[j].outerHTML;
+            }
+            
+            testTemp = [];
+
+        }
+
+        function comparador() { 
+            return Math.random() - 0.5; 
+        }
     }
     fillQuestionsAndAnswers();
+    document.querySelector("header").scrollIntoView();
 }
+
+function createQuizzExpand(){
+    const arraySections = ["initial-page", "quizz-page", "quizz-maker"];
+
+    for(let i = 0; i < arraySections.length; i++){
+        let section = document.querySelector(`.${arraySections[i]}`);
+        if(!section.classList.contains("hide")){
+            section.classList.add("hide");
+        }
+    }
+    document.querySelector(`.${arraySections[2]}`).classList.remove("hide");
+}
+
+function initial(){
+    window.location.reload();
+}
+
+
+/* ++++++++++++++++++++++ script form abaixo ++++++++++++++++++++++++++++++++ */
 
 const urlChecker = (url) => {
     try {
@@ -100,7 +163,3 @@ const hexColorChecker = (color) => {
 
     return regExp.test(color);
 }
-
-
-// <<<<<<< HEAD
-// >>>>>>> 1090d97baedb9f33c0caf39a6de9811783aa256f

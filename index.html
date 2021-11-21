@@ -15,79 +15,39 @@
     <header class="header flex-center">
         <h1 class="title" onclick="initial()">BuzzQuizz</h1>
     </header>
+
     <section class="container initial-page">
         <div class="create flex-center">
             <div>
                 <p>Você não criou nenhum quizz ainda :(</p>
-                <button class="create-btn">Criar Quizz</button>
+                <button class="create-btn" onclick="createQuizzExpand()">Criar Quizz</button>
             </div>
         </div>
         <div class="list-user">
             <div class="section-title">
                 <h2>Seus Quizzes</h2>
-                <div class="create-small-btn"><img src="./assets/create.svg" alt=""></div>
+                <div class="create-small-btn"  onclick="createQuizzExpand()"><img src="./assets/create.svg" alt=""></div>
             </div>
-            <ul class="quizzes-list-user">
-                <li class="quizz">
-                    <div class="quizz-card">
-                        <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
-                    </div>
-                </li>
-                <li class="quizz">
-                    <div class="quizz-card">
-                        <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
-                    </div>
-                </li>
-                <li class="quizz">
-                    <div class="quizz-card">
-                        <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
-                    </div>
-                </li>
-            </ul>
+            <ul class="quizzes-list-user"></ul>
         </div>
         <div class="list">
             <h2>Todos os Quizzes</h2>
-            <ul class="quizzes-list">
-                <li class="quizz">
-                    <div class="quizz-card">
-                        <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
-                    </div>
-                </li>
-            </ul>
+            <ul class="quizzes-list"></ul>
         </div>
     </section>
     <section class="quizz-page hide">
-        <div class="banner-quizz"><h1>O quão Potterhead é você?</h1></div>
+        <div class="banner-quizz"><h1></h1></div>
         <div class="container questions-list">
             <article class="questions">
                 <div class="question">
-                    <div class="question-title color0"><h2>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</h2></div>
-                    <ul class="answers">
-                        <li class="answer">
-                            <div class="answer-image"></div>
-                            <div class="answer-text"><h3>Gatíneo</h3></div>
-                        </li>
-                        <li class="answer">
-                            <div class="answer-image"></div>
-                            <div class="answer-text"><h3>Gatíneo</h3></div>
-                        </li>
-                        <li class="answer">
-                            <div class="answer-image"></div>
-                            <div class="answer-text"><h3>Gatíneo</h3></div>
-                        </li>
-                        <li class="answer">
-                            <div class="answer-image"></div>
-                            <div class="answer-text"><h3>Gatíneo</h3></div>
-                        </li>
-                    </ul>
+                    <div class="question-title color0"><h2></h2></div>
+                    <ul class="answers"></ul>
                 </div>
             </article>
         </div>
     </section>
-
-
-    <section class="container quizz-maker">
-        <div class="quizz-definition flex-center hide">
+    <section class="container quizz-maker hide">
+        <div class="quizz-definition flex-center">
             <h1>Comece pelo começo</h1>
             <div class="box flex-center">
                 <input type="text" placeholder="Título do seu quizz">
@@ -97,7 +57,7 @@
             </div>
             <button>Prosseguir pra criar perguntas</button>
         </div>
-        <div class="quizz-questions flex-center">
+        <div class="quizz-questions flex-center hide">
             <h1>Crie suas perguntas</h1>
             <div class="box flex-left">
                 <div    class="question-maker">
@@ -150,7 +110,7 @@
                     <input type="url" placeholder="URL da imagem 3">
                 </div>
             </div>
-            <button>Prosseguirpra criar níveis</button>
+            <button>Prosseguir pra criar níveis</button>
         </div>
         <div class="quizz-levels flex-center hide">
             <h1>Agora, decida os níveis</h1>
