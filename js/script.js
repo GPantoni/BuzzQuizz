@@ -1,5 +1,8 @@
 let objects = [];
 let bannerQuizz, questionsList, elementAnswerQuizz, elementQuestionsListArticle, elementAnswersLi;
+let quizz = {title:'', image:'', questions:[], levels:[]};
+let numberOfQuestions = 0;
+let numberOfLevels = 0;
 
 
 /* ============ puxando quizzes pelo ID para teste ============ */
@@ -162,4 +165,24 @@ const hexColorChecker = (color) => {
     const regExp = /^#([0-9A-F]{3}){1,2}$/i;
 
     return regExp.test(color);
+}
+
+function quizzDefinition() {
+    const quizzDefinitionPage = document.querySelector('.quizz-definition');
+    const quizzQuestionsPage = document.querySelector('.quizz-questions');
+    
+    let testTitle = document.querySelector('.test-title').value;
+    let testImageUrl = document.querySelector('.test-image-url').value;
+    numberOfQuestions = parseInt(document.querySelector('.number-of-questions').value);
+    numberOfLevels = parseInt(document.querySelector('.number-of-levels').value);
+
+    quizzTitleChecker(testTitle) ? quizz.title = testTitle : alert('Invalid title');
+    urlChecker(testImageUrl) ? quizz.image = testImageUrl : alert('Invalid url');
+    if(numberOfQuestions < 3){alert('minimun 3 questions')};
+    if(numberOfLevels < 2){alert('minimun 2 levels')};
+
+    if(quizz.title !== '' && quizz.image !== '' && numberOfQuestions >= 3 && numberOfLevels >= 2) {
+        quizzDefinitionPage.classList.add('hide');
+        quizzQuestionsPage.classList.remove('hide');
+    }
 }
