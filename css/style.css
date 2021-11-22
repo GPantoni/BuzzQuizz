@@ -146,9 +146,13 @@ h3 {
 .quizz-page, .questions-list {
     margin: 0 auto;
 }
+
+.quizz-page {
+    margin-bottom: 300px;
+}
 .questions-list {
     max-width: 900px;
-    max-height: 900px;
+    /* max-height: 900px; */
 }
 
 .banner-quizz {
@@ -171,7 +175,7 @@ h3 {
 
 .questions {
     width: 100%;
-    height: 820px;
+    height: 100vh;
     background-color: #fff;
     margin: 40px auto 0 auto;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
@@ -197,14 +201,6 @@ h3 {
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 2;
-}
-
-.color0 {
-    background-color: #434CA0;
-}
-
-.color1 {
-    background-color: #A0438D;
 }
 
 .question-title h2 {
@@ -257,6 +253,59 @@ h3 {
     color: #000;
     font-weight: bold;
 }
+
+.result {
+    width: 100%;
+    height: 70vh;
+    background-color: #fff;
+    margin: 40px auto 0 auto;
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 5%);
+    padding: 30px 40px;
+    box-sizing: border-box;
+}
+
+.result-grid {
+    width: 100%;
+    height: 100%;    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 3fr;
+    gap: 10px;
+}
+
+.text-result {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #EC362D;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    text-align: center;
+    padding: 15px 10px;
+}
+
+.image-result {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.text-result h2 {
+    max-width: 80%;
+    color: #fff;
+    font-size: 30px;
+}
+
+.description-result h2 {
+    font-size: 30px;
+}
+
+
 
 .quizz-maker h1 {
     font-family: 'Roboto', sans-serif;
@@ -381,6 +430,20 @@ h3 {
     .quizz-card h3 {
         width: 80%;
     }
+    .result-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 3fr 1fr;
+    }
+    .text-result {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #EC362D;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        text-align: center;
+    }
 }
 
 @media (max-width: 750px){
@@ -397,12 +460,13 @@ h3 {
     .quizz-card {
         background-position: 50%;
     }
-    .questions {
+    .questions, .result {
         padding: 30px 10px;
         margin: 40px 0 0 0;
     }
     .question-title h2 {
         padding: 0 20px;
+        text-align: center;
     }
     .section-title {
         justify-content: space-between;
