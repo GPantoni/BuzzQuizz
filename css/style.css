@@ -225,6 +225,24 @@ h3 {
     flex-direction: column;
 }
 
+.off .answer-image, .off .answer-text {
+    opacity: .4;
+}
+
+.falseOn .answer-text h3 {
+    color: #FF4B4B;
+}
+.trueOn .answer-text h3 {
+    color: #009C22;
+}
+
+.false.off .answer-text h3{
+    color: #FF4B4B;
+}
+.true.off .answer-text h3{
+    color: #009C22;
+}
+
 .answer-image {
     width: 100%;
     height: 100%;

@@ -1,5 +1,9 @@
 let objects = [];
 let bannerQuizz, questionsList, elementAnswerQuizz, elementQuestionsListArticle, elementAnswersLi;
+let meter = 0;
+let meterTrue = 0;
+let meterFalse = 0;
+
 let quizz = {
     title:'',
     image:'',
@@ -9,6 +13,7 @@ let quizz = {
 let question = {};
 let numberOfQuestions = 0;
 let numberOfLevels = 0;
+
 
 
 /* ============ puxando quizzes pelo ID para teste ============ */
@@ -78,7 +83,7 @@ function expandQuizz(element){
 
     bannerQuizz = `<div class="banner-quizz" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url(${tempObject.image})"><h1>${tempObject.title}</h1></div>` ;
     questionsList = `<div class="container questions-list"></div>`;
-    
+    console.dir(tempObject.questions[0].answers[0].isCorrectAnswer);
     elementAnswerQuizz = `
     <article class="questions"></article>
     `;
@@ -100,7 +105,7 @@ function expandQuizz(element){
         for(let i = 0; i < tempObject.questions.length; i++){
             for(let j = 0; j < tempObject.questions[i].answers.length; j++){
                 elementAnswersLi = `
-                <li class="answer">
+                <li class="answer ${tempObject.questions[i].answers[j].isCorrectAnswer}" onclick="checkAnswer(this)">
                     <div class="answer-image" style="background-image: url(${tempObject.questions[i].answers[j].image})"></div>
                     <div class="answer-text"><h3>${tempObject.questions[i].answers[j].text}</h3></div>
                 </li>
@@ -135,6 +140,44 @@ function expandQuizz(element){
     }
     fillQuestionsAndAnswers();
     document.querySelector("header").scrollIntoView();
+}
+
+
+function checkAnswer(element){
+    const ul = element.parentNode.children;
+    const scroll = element.parentNode.parentNode.parentNode;
+    console.dir(element.parentNode.parentNode.parentNode);
+    for(let i = 0; i < ul.length; i++){
+        if(element.parentNode.classList.contains("block")){
+            break;
+        } else {
+            if(element.classList.contains("true")){
+                element.classList.remove("true");
+                element.classList.add("trueOn");
+                element.parentNode.classList.add("block");
+                meter++;
+                meterTrue++;
+            } else {
+                element.classList.remove("false");
+                element.classList.add("falseOn");
+                element.parentNode.classList.add("block");
+                meter++;
+                meterFalse++;
+            }
+        }
+    }
+    for(let i = 0; i < element.parentNode.children.length; i++){
+        if(!(element.parentNode.children[i].classList.contains("trueOn") || element.parentNode.children[i].classList.contains("falseOn"))){
+            console.log("ué caralho");
+            element.parentNode.children[i].classList.add("off");
+        } else {
+            
+        }
+    }
+    function scrollQuestion(){
+        scroll.nextElementSibling.scrollIntoView({block: "center", behavior: "smooth"})
+    }
+    setTimeout(scrollQuestion, 2000)
 }
 
 function createQuizzExpand(){
