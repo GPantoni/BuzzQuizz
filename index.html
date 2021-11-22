@@ -16,7 +16,7 @@
         <h1 class="title" onclick="initial()">BuzzQuizz</h1>
     </header>
 
-    <section class="container initial-page">
+    <section class="container initial-page hide">
         <div class="create flex-center">
             <div>
                 <p>Você não criou nenhum quizz ainda :(</p>
@@ -46,22 +46,25 @@
             </article>
         </div>
     </section>
-    <section class="container quizz-maker hide">
+    <section class="container quizz-maker">
         <div class="quizz-definition flex-center">
             <h1>Comece pelo começo</h1>
             <div class="box flex-center">
-                <input type="text" placeholder="Título do seu quizz">
-                <input type="text" placeholder="URL da imagem do seu quizz">
-                <input type="number" placeholder="Quantidade de perguntas do quizz">
-                <input type="number" placeholder="Quantidade de níveis do quizz">
+                <input type="text" placeholder="Título do seu quizz" class="test-title">
+                <input type="text" placeholder="URL da imagem do seu quizz" class="test-image-url">
+                <input type="number" placeholder="Quantidade de perguntas do quizz" class="number-of-questions" min="3">
+                <input type="number" placeholder="Quantidade de níveis do quizz" class="number-of-levels" min="2">
             </div>
-            <button>Prosseguir pra criar perguntas</button>
+            <button onclick="quizzDefinition()">Prosseguir pra criar perguntas</button>
         </div>
         <div class="quizz-questions flex-center hide">
             <h1>Crie suas perguntas</h1>
-            <div class="box flex-left">
+            <div class="box flex-left closed-form">
                 <div    class="question-maker">
-                    <h2>Pergunta 1</h2>
+                    <div class="open-form">
+                        <h2>Pergunta 1</h2>
+                        <ion-icon name="create-outline" onclick="openForm(this)"></ion-icon>
+                    </div>
                     <input type="text" placeholder="Texto da pergunta">
                     <input type="text" placeholder="Cor de fundo da pergunta">
                     <h2>Reposta correta</h2>
@@ -76,57 +79,26 @@
                     <input type="url" placeholder="URL da imagem 3">
                 </div>
             </div>
-            <div class="box flex-left">
-                <div    class="question-maker">
-                    <h2>Pergunta 2</h2>
-                    <input type="text" placeholder="Texto da pergunta">
-                    <input type="text" placeholder="Cor de fundo da pergunta">
-                    <h2>Reposta correta</h2>
-                    <input type="text" placeholder="Resposta correta">
-                    <input type="url" placeholder="URL da imagem">
-                    <h2>Respostas incorretas</h2>
-                    <input type="text" placeholder="Resposta incorreta 1">
-                    <input type="url" placeholder="URL da imagem 1">
-                    <input type="text" placeholder="Resposta incorreta 2">
-                    <input type="url" placeholder="URL da imagem 2">
-                    <input type="text" placeholder="Resposta incorreta 3">
-                    <input type="url" placeholder="URL da imagem 3">
-                </div>
-            </div>
-            <div class="box flex-left">
-                <div    class="question-maker">
-                    <h2>Pergunta 3</h2>
-                    <input type="text" placeholder="Texto da pergunta">
-                    <input type="text" placeholder="Cor de fundo da pergunta">
-                    <h2>Reposta correta</h2>
-                    <input type="text" placeholder="Resposta correta">
-                    <input type="url" placeholder="URL da imagem">
-                    <h2>Respostas incorretas</h2>
-                    <input type="text" placeholder="Resposta incorreta 1">
-                    <input type="url" placeholder="URL da imagem 1">
-                    <input type="text" placeholder="Resposta incorreta 2">
-                    <input type="url" placeholder="URL da imagem 2">
-                    <input type="text" placeholder="Resposta incorreta 3">
-                    <input type="url" placeholder="URL da imagem 3">
-                </div>
-            </div>
-            <button>Prosseguir pra criar níveis</button>
         </div>
         <div class="quizz-levels flex-center hide">
             <h1>Agora, decida os níveis</h1>
-            <div class="level">
-                <h2>Nível 1</h2>
-                <input type="text" placeholder="Título do nível">
-                <input type="number" placeholder="% de acerto mínima">
-                <input type="url" placeholder="URL da imagem do nível">
-                <input type="text" placeholder="Descrição do nível">
+            <div class="box">
+                <div class="level flex-left">
+                    <h2>Nível 1</h2>
+                    <input type="text" placeholder="Título do nível">
+                    <input type="number" placeholder="% de acerto mínima">
+                    <input type="url" placeholder="URL da imagem do nível">
+                    <input type="text" placeholder="Descrição do nível">
+                </div>
             </div>
-            <div class="level">
-                <h2>Nível 2</h2>
-                <input type="text" placeholder="Título do nível">
-                <input type="number" placeholder="% de acerto mínima">
-                <input type="url" placeholder="URL da imagem do nível">
-                <input type="text" placeholder="Descrição do nível">
+            <div class="box">
+                <div class="level flex-left">
+                    <h2>Nível 2</h2>
+                    <input type="text" placeholder="Título do nível">
+                    <input type="number" placeholder="% de acerto mínima">
+                    <input type="url" placeholder="URL da imagem do nível">
+                    <input type="text" placeholder="Descrição do nível">
+                </div>
             </div>
             <button>Finalizar Quizz</button>
         </div>
@@ -140,6 +112,8 @@
 
         
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="./js/script.js"></script>
 </body>
 </html>

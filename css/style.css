@@ -261,6 +261,8 @@ h3 {
     width: 360px;
     height: 54px;
 
+    margin: 65px 0;
+
     border-radius: 15px;
 
     background: #EC362D;
@@ -308,15 +310,15 @@ h3 {
     text-align: initial;
 }
 
-.quizz-questions {
+.quizz-questions, .quizz-levels {
     gap: 24px;
 }
 
-.quizz-questions .box {
-    padding: 27px 18px;
+.quizz-questions .box, .quizz-levels .box {
+    padding: 20px 18px;
 }
 
-.question-maker {
+.question-maker, .level {
     display: flex;
     flex-flow: column;
     gap: 14px;
@@ -330,8 +332,16 @@ h3 {
     margin: 0;
 }
 
-.none {
-    display: none;
+.open-form {
+    /* width: auto; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.closed-form {
+    height: 55px;
+    
+    overflow-y: hidden;
 }
 
 

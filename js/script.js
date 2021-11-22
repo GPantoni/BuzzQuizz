@@ -1,5 +1,14 @@
 let objects = [];
 let bannerQuizz, questionsList, elementAnswerQuizz, elementQuestionsListArticle, elementAnswersLi;
+let quizz = {
+    title:'',
+    image:'',
+    questions:[],
+    levels:[]
+};
+let question = {};
+let numberOfQuestions = 0;
+let numberOfLevels = 0;
 
 
 /* ============ puxando quizzes pelo ID para teste ============ */
@@ -165,4 +174,73 @@ const hexColorChecker = (color) => {
     const regExp = /^#([0-9A-F]{3}){1,2}$/i;
 
     return regExp.test(color);
+}
+
+const textSizeChecker = (text) => {
+    return text.length > 20 ? true : false;
+}
+
+function openForm(expandButton) {
+    let form = expandButton;
+    
+    form.parentNode.parentNode.parentNode.classList.toggle('closed-form');
+}
+
+function quizzDefinition() {
+    const quizzDefinitionPage = document.querySelector('.quizz-definition');
+    const quizzQuestionsPage = document.querySelector('.quizz-questions');
+    
+    let testTitle = document.querySelector('.test-title').value;
+    let testImageUrl = document.querySelector('.test-image-url').value;
+    numberOfQuestions = parseInt(document.querySelector('.number-of-questions').value);
+    numberOfLevels = parseInt(document.querySelector('.number-of-levels').value);
+
+    quizzTitleChecker(testTitle) ? quizz.title = testTitle : alert('Invalid title');
+    urlChecker(testImageUrl) ? quizz.image = testImageUrl : alert('Invalid url');
+    if(numberOfQuestions < 3){alert('minimun 3 questions')};
+    if(numberOfLevels < 2){alert('minimun 2 levels')};
+
+    if(quizz.title !== '' && quizz.image !== '' && numberOfQuestions >= 3 && numberOfLevels >= 2) {
+        for(let i = 1; i < numberOfQuestions; i++) {
+            quizzQuestionsPage.innerHTML += `
+            <div class="box flex-left closed-form">
+                <div    class="question-maker">
+                    <div class="open-form">
+                        <h2>Pergunta ${i+1}</h2>
+                        <ion-icon name="create-outline" onclick="openForm(this)"></ion-icon>
+                    </div>
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
+                    <h2>Reposta correta</h2>
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="url" placeholder="URL da imagem">
+                    <h2>Respostas incorretas</h2>
+                    <input type="text" placeholder="Resposta incorreta 1">
+                    <input type="url" placeholder="URL da imagem 1">
+                    <input type="text" placeholder="Resposta incorreta 2">
+                    <input type="url" placeholder="URL da imagem 2">
+                    <input type="text" placeholder="Resposta incorreta 3">
+                    <input type="url" placeholder="URL da imagem 3">
+                </div>
+            </div>
+            `
+        }
+        
+        quizzQuestionsPage.innerHTML += `<button onclick="quizzQuestions()">Prosseguir pra criar níveis</button>`
+        
+        quizzDefinitionPage.classList.add('hide');
+        quizzQuestionsPage.classList.remove('hide');
+    }
+}
+
+function quizzQuestions() {
+    let questions = document.querySelectorAll('.question-maker');
+    
+    for(let i = 0; i < numberOfQuestions; i++) {
+        let prototypeQuestion = questions[i];
+        if(textSizeChecker(prototypeQuestion.querySelector('input:firstChild').value)){
+            question.title = prototypeQuestion.querySelector('input:firstChild').value;
+        } else { alert('Texto da pergunta deve ter amanho mínimo de 20 caracteres')}
+
+    }
 }
