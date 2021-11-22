@@ -315,7 +315,7 @@ h3 {
 }
 
 .quizz-questions .box, .quizz-levels .box {
-    padding: 27px 18px;
+    padding: 20px 18px;
 }
 
 .question-maker, .level {
@@ -339,7 +339,7 @@ h3 {
 }
 
 .closed-form {
-    height: 60px;
+    height: 55px;
     
     overflow-y: hidden;
 }

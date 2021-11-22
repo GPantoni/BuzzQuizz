@@ -1,6 +1,12 @@
 let objects = [];
 let bannerQuizz, questionsList, elementAnswerQuizz, elementQuestionsListArticle, elementAnswersLi;
-let quizz = {title:'', image:'', questions:[], levels:[]};
+let quizz = {
+    title:'',
+    image:'',
+    questions:[],
+    levels:[]
+};
+let question = {};
 let numberOfQuestions = 0;
 let numberOfLevels = 0;
 
@@ -167,6 +173,10 @@ const hexColorChecker = (color) => {
     return regExp.test(color);
 }
 
+const textSizeChecker = (text) => {
+    return text.length > 20 ? true : false;
+}
+
 function openForm(expandButton) {
     let form = expandButton;
     
@@ -213,9 +223,21 @@ function quizzDefinition() {
             `
         }
         
-        quizzQuestionsPage.innerHTML += `<button>Prosseguir pra criar níveis</button>`
+        quizzQuestionsPage.innerHTML += `<button onclick="quizzQuestions()">Prosseguir pra criar níveis</button>`
         
         quizzDefinitionPage.classList.add('hide');
         quizzQuestionsPage.classList.remove('hide');
+    }
+}
+
+function quizzQuestions() {
+    let questions = document.querySelectorAll('.question-maker');
+    
+    for(let i = 0; i < numberOfQuestions; i++) {
+        let prototypeQuestion = questions[i];
+        if(textSizeChecker(prototypeQuestion.querySelector('input:firstChild').value)){
+            question.title = prototypeQuestion.querySelector('input:firstChild').value;
+        } else { alert('Texto da pergunta deve ter amanho mínimo de 20 caracteres')}
+
     }
 }
