@@ -276,6 +276,7 @@ function openForm(expandButton) {
 function quizzDefinition() {
     const quizzDefinitionPage = document.querySelector('.quizz-definition');
     const quizzQuestionsPage = document.querySelector('.quizz-questions');
+    const quizzLevelsPage = document.querySelector('.quizz-levels');
     
     let testTitle = document.querySelector('.test-title').value;
     let testImageUrl = document.querySelector('.test-image-url').value;
@@ -314,6 +315,22 @@ function quizzDefinition() {
         }
         
         quizzQuestionsPage.innerHTML += `<button onclick="quizzQuestions()">Prosseguir pra criar níveis</button>`
+
+        for(let i = 1; i < numberOfLevels; i++) {
+            quizzLevelsPage.innerHTML += `
+            <div class="box">
+                <div class="level flex-left">
+                    <h2>Nível ${i+1}</h2>
+                    <input type="text" placeholder="Título do nível">
+                    <input type="number" placeholder="% de acerto mínima">
+                    <input type="url" placeholder="URL da imagem do nível">
+                    <input type="text" placeholder="Descrição do nível">
+                </div>
+            </div>
+            `
+        }
+
+        quizzLevelsPage.innerHTML += <button>Finalizar Quizz</button>;
         
         quizzDefinitionPage.classList.add('hide');
         quizzQuestionsPage.classList.remove('hide');
@@ -324,6 +341,7 @@ function quizzQuestions() {
     let contBreak = 0;
     let questions = document.querySelectorAll('.question-maker');
     quizz.questions = [];
+    
     for(let i = 0; i < questions.length; i++){
         if(contBreak !== 0){
             contBreak = 0;
@@ -416,7 +434,19 @@ function quizzQuestions() {
             }
 
         }
+        if(contBreak !== 0){
+            contBreak = 0;
+            break;
+        }
         quizz.questions.push(question);
     }
-    console.log(quizz);
+
+    if(quizz.questions.length === numberOfQuestions) {
+        document.querySelector('.quizz-questions').classList.toggle('hide');
+        document.querySelector('.quizz-levels').classList.toggle('hide');
+    }
+}
+
+function quizzLevels() {
+
 }
