@@ -285,7 +285,7 @@ const percentageChecker = (percentage) => {
     return percentage >= 0 && percentage <= 100 ? true : false;
 }
 
-const levelDescription = (description) => {
+const levelDescriptionChecker = (description) => {
     return description.length >= 30 ? true : false;
 }
 
@@ -355,7 +355,7 @@ function quizzDefinition() {
             `
         }
 
-        quizzLevelsPage.innerHTML += `<button>Finalizar Quizz</button>`;
+        quizzLevelsPage.innerHTML += `<button onclick="quizzLevels()">Finalizar Quizz</button>`;
         
         quizzDefinitionPage.classList.add('hide');
         quizzQuestionsPage.classList.remove('hide');
@@ -519,7 +519,7 @@ function quizzLevels() {
                 }
             }
             if(j === 4) {
-                if(levelDescription(levels[i].children[j].value)) {
+                if(levelDescriptionChecker(levels[i].children[j].value)) {
                     level.text = levels[i].children[j].value;
                 } else {
                     alert('Descrição do nível: tamanho mínimo 30 caracteres');
@@ -536,10 +536,5 @@ function quizzLevels() {
 
         quizz.levels.push(level);
     }
-
-    if(quizz.levels.length === numberOfLevels) {
-        if(quizz.levels.includes({minValue: 0})) {
-            
-        }
-    }
+    
 }
