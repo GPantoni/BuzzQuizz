@@ -476,6 +476,7 @@ function quizzLevels() {
     let contBreak = 0;
     let levels = document.querySelectorAll('.level');
     quizz.levels = [];
+    let meterValue = [];
 
     for(let i = 0; i < levels.length; i++) {
         if(contBreak !== 0) {
@@ -502,9 +503,10 @@ function quizzLevels() {
             }
             if(j === 2) {
                 if(percentageChecker(levels[i].children[j].value)) {
-                    level.minValue = levels[i].children[j].value;
+                    level.minValue = parseInt(levels[i].children[j].value);
+                    meterValue.push(parseInt(levels[i].children[j].value));
                 } else {
-                    alert('Porcentagem de acerto de ver ser um número entre 0 e 100.');
+                    alert('Porcentagem de acerto deve ser um número entre 0 e 100.');
                     contBreak;
                     break;
                 }
@@ -536,5 +538,38 @@ function quizzLevels() {
 
         quizz.levels.push(level);
     }
-    
+
+    if(quizz.levels.length === numberOfLevels && quizz.levels.filter(percent => percent.minValue === 0).length === 1) {
+        console.log("DEU POST");
+        const promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", quizz);
+        promise.then(postQuizz);
+        promise.catch(() => {
+            console.log("SE FODEU");
+        })
+    } else {
+        console.log("Tem mais de um '0'.");
+    }
 }
+
+function postQuizz(resposta){
+    console.log("Objeto do post:");
+    console.dir(resposta);
+    /* let keysAndIds = [{id: resposta.data.id, key: resposta.data.key}]; */
+}
+
+
+
+/* keyAndIds = [
+    {key: xablau, id: 1458}, {key, id}
+]
+
+keyAndIds[0].key // xablau
+keyAndIds[0].id // 1458
+
+keyAndIds = [
+    ["xablau", 1458], ["xabliu", 1470]
+]
+
+keyAndIds[0][0] // xablau
+keyAndIds[0][1] // 1458
+ */
