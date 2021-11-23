@@ -44,7 +44,7 @@ function loadQuizzListUser(){
         objects = reply;
 
         quizzesList.innerHTML += `
-        <li class="quizz" onclick="expandQuizz(this)">
+        <li class="quizz" data-identifier="quizz-card" onclick="expandQuizz(this)">
             <div class="quizz-card" style="background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65%, #000000 100%), url(${reply.data.image})">
                 <h3>${reply.data.title}</h3>
             </div>
@@ -57,7 +57,7 @@ function loadQuizzList(){
     promise.then(fillQuizz);
 
     const quizzesList = document.querySelector('.quizzes-list');
-    const count = quizzesList.children.length; // = 5
+    const count = quizzesList.children.length;
     let titlesCheck = [];
     let idsCheck = [];
     function fillQuizz(reply){
@@ -67,7 +67,7 @@ function loadQuizzList(){
                 titlesCheck.push(reply.data[i].title);
                 idsCheck.push(i);
                 quizzesList.innerHTML += `
-                <li class="quizz" onclick="expandQuizz(this)">
+                <li class="quizz" data-identifier="quizz-card" onclick="expandQuizz(this)">
                     <div class="quizz-card">
                         <h3>${reply.data[i].title}</h3>
                     </div>
@@ -575,7 +575,6 @@ function postQuizz(resposta){
     localStorage.setItem('userQuizzes', userCreatedQuizz);
     
     const quizzFinishedPage = document.querySelector('.quizz-finished');
-
     quizzFinishedPage.innerHTML += `
         <h1>Seu quizz está pronto!</h1>
         <div class="finished-created-quizz">
