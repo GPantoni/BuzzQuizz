@@ -13,7 +13,8 @@ let quizz = {
     questions:[],
     levels:[]
 };
-let question = {};
+
+
 let numberOfQuestions = 0;
 let numberOfLevels = 0;
 
@@ -317,4 +318,105 @@ function quizzDefinition() {
         quizzDefinitionPage.classList.add('hide');
         quizzQuestionsPage.classList.remove('hide');
     }
+}
+
+function quizzQuestions() {
+    let contBreak = 0;
+    let questions = document.querySelectorAll('.question-maker');
+    quizz.questions = [];
+    for(let i = 0; i < questions.length; i++){
+        if(contBreak !== 0){
+            contBreak = 0;
+            break;
+        }
+        let question = {
+            title: "",
+            color: "",
+            answers: []
+        };
+        for(let j = 1; j < questions[i].children.length; j++){
+            let answer = {
+                text: "",
+                image: "",
+                isCorrectAnswer: null
+            };
+            if(j === 1){
+                if(textSizeChecker(questions[i].children[j].value)){
+                    question.title = questions[i].children[j].value;
+                } else {
+                    alert("Texto da questão: tamanho mínimo 20 caracteres.");
+                    contBreak++;
+                    break;
+                }
+            }
+            if(j === 2){
+                if(hexColorChecker(questions[i].children[j].value)){
+                    question.color = questions[i].children[j].value;
+                } else {
+                    alert("Informe uma cor hexadecimal válida.");
+                    contBreak++;
+                    break;
+                }
+            }
+            if(j === 4){
+                if(questions[i].children[j].value !== "" && urlChecker(questions[i].children[j+1].value)){
+                    answer.text = questions[i].children[j].value;
+                    answer.image = questions[i].children[j+1].value;
+                    answer.isCorrectAnswer = true;
+
+                    question.answers.push(answer);
+                } else {
+                    alert("Texto da resposta correta ou url da imagem inválidas.");
+                    contBreak++;
+                    break;
+                }
+            }
+            if(j === 7){
+                if(questions[i].children[j].value !== "" && urlChecker(questions[i].children[j+1].value)){
+                    answer.text = questions[i].children[j].value;
+                    answer.image = questions[i].children[j+1].value;
+                    answer.isCorrectAnswer = false;
+
+                    question.answers.push(answer);
+                } else {
+                    alert("Texto da resposta incorreta 1 ou url da imagem inválidas.");
+                    contBreak++;
+                    break;
+                }
+            }
+            if(j === 9){
+                if(questions[i].children[j].value !== "" && questions[i].children[j+1].value != ""){
+                    if(questions[i].children[j].value !== "" && urlChecker(questions[i].children[j+1].value)){
+                        answer.text = questions[i].children[j].value;
+                        answer.image = questions[i].children[j+1].value;
+                        answer.isCorrectAnswer = false;
+
+                        question.answers.push(answer);
+                    } else {
+                        alert("Texto da resposta incorreta 2 ou url da imagem inválidas.");
+                        contBreak++;
+                        break;
+                    }
+                }
+            }
+            if(j === 11){
+                if(questions[i].children[j].value != "" && questions[i].children[j+1].value != ""){
+                    if(questions[i].children[j].value !== "" && urlChecker(questions[i].children[j+1].value)){
+                        answer.text = questions[i].children[j].value;
+                        answer.image = questions[i].children[j+1].value;
+                        answer.isCorrectAnswer = false;
+
+                        question.answers.push(answer);
+                    } else {
+                        alert("Texto da resposta incorreta 3 ou url da imagem inválidas.");
+                        contBreak++;
+                        break;
+                    }
+                }
+            }
+
+        }
+        quizz.questions.push(question);
+    }
+    console.log(quizz);
 }
