@@ -20,19 +20,19 @@
         <div class="create flex-center">
             <div>
                 <p>Você não criou nenhum quizz ainda :(</p>
-                <button class="create-btn" onclick="createQuizzExpand()">Criar Quizz</button>
+                <button class="create-btn" onclick="createQuizzExpand()" data-identifier="create-quizz">Criar Quizz</button>
             </div>
         </div>
         <div class="list-user hide">
             <div class="section-title">
                 <h2>Seus Quizzes</h2>
-                <div class="create-small-btn"  onclick="createQuizzExpand()"><img src="./assets/create.svg" alt=""></div>
+                <div class="create-small-btn"  onclick="createQuizzExpand()" data-identifier="create-quizz"><img src="./assets/create.svg" alt=""></div>
             </div>
-            <ul class="quizzes-list-user"></ul>
+            <ul class="quizzes-list-user" data-identifier="user-quizzes"></ul>
         </div>
         <div class="list">
             <h2>Todos os Quizzes</h2>
-            <ul class="quizzes-list"></ul>
+            <ul class="quizzes-list" data-identifier="general-quizzes"></ul>
         </div>
     </section>
     <section class="quizz-page hide">

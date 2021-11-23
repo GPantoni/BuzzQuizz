@@ -44,7 +44,7 @@ function loadQuizzListUser(){
         objects = reply;
 
         quizzesList.innerHTML += `
-        <li class="quizz" onclick="expandQuizz(this)">
+        <li class="quizz" onclick="expandQuizz(this)" data-identifier="quizz-card">
             <div class="quizz-card" style="background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65%, #000000 100%), url(${reply.data.image})">
                 <h3>${reply.data.title}</h3>
             </div>
@@ -67,7 +67,7 @@ function loadQuizzList(){
                 titlesCheck.push(reply.data[i].title);
                 idsCheck.push(i);
                 quizzesList.innerHTML += `
-                <li class="quizz" onclick="expandQuizz(this)">
+                <li class="quizz" onclick="expandQuizz(this)" data-identifier="quizz-card">
                     <div class="quizz-card">
                         <h3>${reply.data[i].title}</h3>
                     </div>
@@ -312,10 +312,10 @@ function quizzDefinition() {
         for(let i = 0; i < numberOfQuestions; i++) {
             quizzQuestionsPage.innerHTML += `
             <div class="box flex-left closed-form">
-                <div    class="question-maker">
+                <div    class="question-maker" data-identifier="question">
                     <div class="open-form">
                         <h2>Pergunta ${i+1}</h2>
-                        <ion-icon name="create-outline" onclick="openForm(this)"></ion-icon>
+                        <ion-icon name="create-outline" onclick="openForm(this)" data-identifier="expand"></ion-icon>
                     </div>
                     <input type="text" placeholder="Texto da pergunta">
                     <input type="text" placeholder="Cor de fundo da pergunta">
@@ -339,10 +339,10 @@ function quizzDefinition() {
         for(let i = 0; i < numberOfLevels; i++) {
             quizzLevelsPage.innerHTML += `
             <div class="box closed-form">
-                <div class="level flex-left">
+                <div class="level flex-left" data-identifier="level">
                     <div class="open-form">
                         <h2>Nível ${i+1}</h2>
-                        <ion-icon name="create-outline" onclick="openForm(this)"></ion-icon>
+                        <ion-icon name="create-outline" onclick="openForm(this)" data-identifier="expand"></ion-icon>
                     </div>
                     <input type="text" placeholder="Título do nível">
                     <input type="number" placeholder="% de acerto mínima">
