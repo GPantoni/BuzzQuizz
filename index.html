@@ -16,7 +16,7 @@
         <h1 class="title" onclick="initial()">BuzzQuizz</h1>
     </header>
 
-    <section class="container initial-page">
+    <section class="container initial-page hide">
         <div class="create flex-center">
             <div>
                 <p>Você não criou nenhum quizz ainda :(</p>
@@ -58,7 +58,7 @@
         </div> -->
         
     </section>
-    <section class="container quizz-maker hide">
+    <section class="container quizz-maker">
         <div class="quizz-definition flex-center">
             <h1>Comece pelo começo</h1>
             <div class="box flex-center">
@@ -71,38 +71,9 @@
         </div>
         <div class="quizz-questions flex-center hide">
             <h1>Crie suas perguntas</h1>
-            <div class="box flex-left closed-form">
-                <div    class="question-maker">
-                    <div class="open-form">
-                        <h2>Pergunta 1</h2>
-                        <ion-icon name="create-outline" onclick="openForm(this)"></ion-icon>
-                    </div>
-                    <input type="text" placeholder="Texto da pergunta">
-                    <input type="text" placeholder="Cor de fundo da pergunta">
-                    <h2>Reposta correta</h2>
-                    <input type="text" placeholder="Resposta correta">
-                    <input type="url" placeholder="URL da imagem">
-                    <h2>Respostas incorretas</h2>
-                    <input type="text" placeholder="Resposta incorreta 1">
-                    <input type="url" placeholder="URL da imagem 1">
-                    <input type="text" placeholder="Resposta incorreta 2">
-                    <input type="url" placeholder="URL da imagem 2">
-                    <input type="text" placeholder="Resposta incorreta 3">
-                    <input type="url" placeholder="URL da imagem 3">
-                </div>
-            </div>
         </div>
         <div class="quizz-levels flex-center hide">
             <h1>Agora, decida os níveis</h1>
-            <div class="box">
-                <div class="level flex-left">
-                    <h2>Nível 1</h2>
-                    <input type="text" placeholder="Título do nível">
-                    <input type="number" placeholder="% de acerto mínima">
-                    <input type="url" placeholder="URL da imagem do nível">
-                    <input type="text" placeholder="Descrição do nível">
-                </div>
-            </div>
         </div>
         <div class="quizz-finished flex-center hide">
             <h1>Seu quizz está pronto!</h1>

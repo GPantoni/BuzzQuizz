@@ -274,7 +274,19 @@ const hexColorChecker = (color) => {
 }
 
 const textSizeChecker = (text) => {
-    return text.length > 20 ? true : false;
+    return text.length >= 20 ? true : false;
+}
+
+const levelTitleSizeChecker = (levelTitle) => {
+    return levelTitle.length >= 10 ? true : false;
+}
+
+const percentageChecker = (percentage) => {
+    return percentage >= 0 && percentage <= 100 ? true : false;
+}
+
+const levelDescription = (description) => {
+    return description.length >= 30 ? true : false;
 }
 
 function openForm(expandButton) {
@@ -299,7 +311,7 @@ function quizzDefinition() {
     if(numberOfLevels < 2){alert('minimun 2 levels')};
 
     if(quizz.title !== '' && quizz.image !== '' && numberOfQuestions >= 3 && numberOfLevels >= 2) {
-        for(let i = 1; i < numberOfQuestions; i++) {
+        for(let i = 0; i < numberOfQuestions; i++) {
             quizzQuestionsPage.innerHTML += `
             <div class="box flex-left closed-form">
                 <div    class="question-maker">
@@ -307,18 +319,18 @@ function quizzDefinition() {
                         <h2>Pergunta ${i+1}</h2>
                         <ion-icon name="create-outline" onclick="openForm(this)"></ion-icon>
                     </div>
-                    <input type="text" placeholder="Texto da pergunta">
-                    <input type="text" placeholder="Cor de fundo da pergunta">
+                    <input type="text" placeholder="Texto da pergunta" value="Testando a pergunta mais uma vez">
+                    <input type="text" placeholder="Cor de fundo da pergunta" value="#d6d6d6">
                     <h2>Reposta correta</h2>
-                    <input type="text" placeholder="Resposta correta">
-                    <input type="url" placeholder="URL da imagem">
+                    <input type="text" placeholder="Resposta correta" value="Resposta preenchida">
+                    <input type="url" placeholder="URL da imagem" value="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg.freeonline.it%2Fimg%2Farticoli%2Fmask_saw_pig_mask.jpg&f=1&nofb=1">
                     <h2>Respostas incorretas</h2>
-                    <input type="text" placeholder="Resposta incorreta 1">
-                    <input type="url" placeholder="URL da imagem 1">
-                    <input type="text" placeholder="Resposta incorreta 2">
-                    <input type="url" placeholder="URL da imagem 2">
-                    <input type="text" placeholder="Resposta incorreta 3">
-                    <input type="url" placeholder="URL da imagem 3">
+                    <input type="text" placeholder="Resposta incorreta 1" value="Resposta preenchida">
+                    <input type="url" placeholder="URL da imagem 1" value="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg.freeonline.it%2Fimg%2Farticoli%2Fmask_saw_pig_mask.jpg&f=1&nofb=1">
+                    <input type="text" placeholder="Resposta incorreta 2" value="Resposta preenchida">
+                    <input type="url" placeholder="URL da imagem 2" value="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg.freeonline.it%2Fimg%2Farticoli%2Fmask_saw_pig_mask.jpg&f=1&nofb=1">
+                    <input type="text" placeholder="Resposta incorreta 3" value="Resposta preenchida">
+                    <input type="url" placeholder="URL da imagem 3" value="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg.freeonline.it%2Fimg%2Farticoli%2Fmask_saw_pig_mask.jpg&f=1&nofb=1">
                 </div>
             </div>
             `
@@ -326,11 +338,14 @@ function quizzDefinition() {
         
         quizzQuestionsPage.innerHTML += `<button onclick="quizzQuestions()">Prosseguir pra criar níveis</button>`
 
-        for(let i = 1; i < numberOfLevels; i++) {
+        for(let i = 0; i < numberOfLevels; i++) {
             quizzLevelsPage.innerHTML += `
-            <div class="box">
+            <div class="box closed-form">
                 <div class="level flex-left">
-                    <h2>Nível ${i+1}</h2>
+                    <div class="open-form">
+                        <h2>Nível ${i+1}</h2>
+                        <ion-icon name="create-outline" onclick="openForm(this)"></ion-icon>
+                    </div>
                     <input type="text" placeholder="Título do nível">
                     <input type="number" placeholder="% de acerto mínima">
                     <input type="url" placeholder="URL da imagem do nível">
@@ -458,5 +473,73 @@ function quizzQuestions() {
 }
 
 function quizzLevels() {
+    let contBreak = 0;
+    let levels = document.querySelectorAll('.level');
+    quizz.levels = [];
 
+    for(let i = 0; i < levels.length; i++) {
+        if(contBreak !== 0) {
+            contBreak = 0;
+            break;
+        }
+
+        let level = {
+            title: null,
+            image: null,
+            text: null,
+            minValue:null
+        }
+
+        for(let j = 1; j < levels[i].children.length; j++) {
+            if(j === 1) {
+                if(levelTitleSizeChecker(levels[i].children[j].value)) {
+                    level.title = levels[i].children[j].value;
+                } else {
+                    alert('Título do nível: tamanho mínimo 10 caracteres.');
+                    contBreak++;
+                    break;
+                }
+            }
+            if(j === 2) {
+                if(percentageChecker(levels[i].children[j].value)) {
+                    level.minValue = levels[i].children[j].value;
+                } else {
+                    alert('Porcentagem de acerto de ver ser um número entre 0 e 100.');
+                    contBreak;
+                    break;
+                }
+            }
+            if(j === 3) {
+                if(urlChecker(levels[i].children[j].value)) {
+                    level.image = levels[i].children[j].value;
+                } else {
+                    alert('URL inválida.');
+                    contBreak++;
+                    break;
+                }
+            }
+            if(j === 4) {
+                if(levelDescription(levels[i].children[j].value)) {
+                    level.text = levels[i].children[j].value;
+                } else {
+                    alert('Descrição do nível: tamanho mínimo 30 caracteres');
+                    contBreak++;
+                    break;
+                }
+            }
+        }
+
+        if(contBreak !== 0) {
+            contBreak = 0;
+            break;
+        }
+
+        quizz.levels.push(level);
+    }
+
+    if(quizz.levels.length === numberOfLevels) {
+        if(quizz.levels.includes({minValue: 0})) {
+            
+        }
+    }
 }
