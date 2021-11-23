@@ -153,7 +153,6 @@ h3 {
 }
 .questions-list {
     max-width: 900px;
-    /* max-height: 900px; */
 }
 
 .banner-quizz {
@@ -168,6 +167,8 @@ h3 {
     align-items: center;
     position: relative;
     left: 0;
+    padding: 0 20px;
+    overflow-x: hidden;
 }
 
 .banner-quizz h1 {
@@ -202,6 +203,8 @@ h3 {
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 2;
+    overflow-x: hidden;
+    text-align: center;
 }
 
 .question-title h2 {
@@ -274,6 +277,7 @@ h3 {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 3fr;
     gap: 10px;
+    overflow-x: hidden;
 }
 
 .text-result {
@@ -288,6 +292,7 @@ h3 {
     grid-row-end: 2;
     text-align: center;
     padding: 15px 10px;
+    overflow-x: hidden;
 }
 
 .quizz-page button {
@@ -323,6 +328,11 @@ a {
     max-width: 80%;
     color: #fff;
     font-size: 30px;
+
+}
+
+.description-result {
+    overflow-x: hidden;
 }
 
 .description-result h2 {
@@ -358,6 +368,27 @@ a {
 
     background: #EC362D;
     color: #FFFFFF;
+}
+
+.quizz-finished {
+    width: 40vw;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.quizz-finished button {
+    margin: 0;
+    width: auto;
+    height: 40px;
+    padding: 0 40px;
+}
+
+.quizz-finished a {
+    text-decoration: none;
+    color: #818181;
+}
+.quizz-finished .finished-created-quizz {
+    width: 100%;
 }
 
 .box input {
@@ -424,7 +455,6 @@ a {
 }
 
 .open-form {
-    /* width: auto; */
     display: flex;
     justify-content: space-between;
 }
