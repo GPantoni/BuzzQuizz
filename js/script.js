@@ -318,15 +318,3 @@ function quizzDefinition() {
         quizzQuestionsPage.classList.remove('hide');
     }
 }
-
-function quizzQuestions() {
-    let questions = document.querySelectorAll('.question-maker');
-    
-    for(let i = 0; i < numberOfQuestions; i++) {
-        let prototypeQuestion = questions[i];
-        if(textSizeChecker(prototypeQuestion.querySelector('input:firstChild').value)){
-            question.title = prototypeQuestion.querySelector('input:firstChild').value;
-        } else { alert('Texto da pergunta deve ter amanho mínimo de 20 caracteres')}
-
-    }
-}
