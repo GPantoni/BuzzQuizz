@@ -141,6 +141,7 @@ h3 {
     position: absolute;
     bottom: 10px;
     left: 10px;
+    overflow-x: hidden;
 }
 
 .quizz-page, .questions-list {
@@ -148,7 +149,7 @@ h3 {
 }
 
 .quizz-page {
-    margin-bottom: 300px;
+    margin-bottom: 100px;
 }
 .questions-list {
     max-width: 900px;
@@ -219,6 +220,8 @@ h3 {
     height: 100%;
     display: flex;
     flex-direction: column;
+    
+    overflow-x: hidden;
 }
 
 .off .answer-image, .off .answer-text {
@@ -285,6 +288,27 @@ h3 {
     grid-row-end: 2;
     text-align: center;
     padding: 15px 10px;
+}
+
+.quizz-page button {
+    margin: 65px 0 20px 0;
+    padding: 10px 40px;
+    border-radius: 15px;
+    background: #EC362D;
+    color: #FFFFFF;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: #818181;
+}
+
+.btns {
+    text-align: center;
 }
 
 .image-result {

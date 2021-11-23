@@ -95,8 +95,10 @@ function expandQuizz(element){
 
     bannerQuizz = `<div class="banner-quizz" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url(${tempObject.image})"><h1>${tempObject.title}</h1></div>` ;
     questionsList = `<div class="container questions-list"></div>`;
-    quizzResult = `<div class="container quizz-result hide"><div class="result"><div class="result-grid"><div class="text-result"><h2>PORRA CARALHO</h2></div><div class="image-result"></div><div class="description-result"><h2></h2></div></div></div></div>`;
-
+    quizzResult = `<div class="container quizz-result hide"><div class="result"><div class="result-grid"><div class="text-result"><h2></h2></div><div class="image-result"></div><div class="description-result"><h2></h2></div></div></div><div class="container btns"><button onclick="restartQuizz(this)">Reiniciar Quizz</button><div><a href="#" onclick="initial()">Voltar para home</a></div></div></div>`;
+    /* btnsResult = `
+        <div class="container btns"><button>Reiniciar Quizz</button><div><a href="#">Voltar para home</a></div></div>
+    `; */
     
 
     elementAnswerQuizz = `
@@ -157,6 +159,14 @@ function expandQuizz(element){
     document.querySelector("header").scrollIntoView();
 }
 
+function restartQuizz(element){
+    const elementExpand = element.parentNode.parentNode.parentNode;
+    setTimeout(() =>{
+        document.querySelector("header").scrollIntoView({behavior: "smooth"})
+        expandQuizz(elementExpand);
+    }, 1000);
+}
+
 
 function checkAnswer(element){
     const ul = element.parentNode.children;
@@ -212,7 +222,7 @@ function checkAnswer(element){
 
             percentage = Math.round((meterTrue * 100) / meter);
             for(let popo = 0; popo < tempObject.levels.length; popo++){
-                if(percentage > tempObject.levels[popo].minValue){
+                if(percentage >= tempObject.levels[popo].minValue){
                     level = tempObject.levels[popo];
                 }
             }
@@ -330,7 +340,7 @@ function quizzDefinition() {
             `
         }
 
-        quizzLevelsPage.innerHTML += <button>Finalizar Quizz</button>;
+        quizzLevelsPage.innerHTML += `<button>Finalizar Quizz</button>`;
         
         quizzDefinitionPage.classList.add('hide');
         quizzQuestionsPage.classList.remove('hide');
