@@ -317,18 +317,18 @@ function quizzDefinition() {
                         <h2>Pergunta ${i+1}</h2>
                         <ion-icon name="create-outline" onclick="openForm(this)"></ion-icon>
                     </div>
-                    <input type="text" placeholder="Texto da pergunta" value="Testando a pergunta mais uma vez">
-                    <input type="text" placeholder="Cor de fundo da pergunta" value="#d6d6d6">
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
                     <h2>Reposta correta</h2>
-                    <input type="text" placeholder="Resposta correta" value="Resposta preenchida">
-                    <input type="url" placeholder="URL da imagem" value="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg.freeonline.it%2Fimg%2Farticoli%2Fmask_saw_pig_mask.jpg&f=1&nofb=1">
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="url" placeholder="URL da imagem">
                     <h2>Respostas incorretas</h2>
-                    <input type="text" placeholder="Resposta incorreta 1" value="Resposta preenchida">
-                    <input type="url" placeholder="URL da imagem 1" value="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg.freeonline.it%2Fimg%2Farticoli%2Fmask_saw_pig_mask.jpg&f=1&nofb=1">
-                    <input type="text" placeholder="Resposta incorreta 2" value="Resposta preenchida">
-                    <input type="url" placeholder="URL da imagem 2" value="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg.freeonline.it%2Fimg%2Farticoli%2Fmask_saw_pig_mask.jpg&f=1&nofb=1">
-                    <input type="text" placeholder="Resposta incorreta 3" value="Resposta preenchida">
-                    <input type="url" placeholder="URL da imagem 3" value="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimg.freeonline.it%2Fimg%2Farticoli%2Fmask_saw_pig_mask.jpg&f=1&nofb=1">
+                    <input type="text" placeholder="Resposta incorreta 1">
+                    <input type="url" placeholder="URL da imagem 1">
+                    <input type="text" placeholder="Resposta incorreta 2">
+                    <input type="url" placeholder="URL da imagem 2">
+                    <input type="text" placeholder="Resposta incorreta 3">
+                    <input type="url" placeholder="URL da imagem 3">
                 </div>
             </div>
             `
@@ -549,18 +549,15 @@ function quizzLevels() {
 }
 
 function postQuizz(resposta){
-    //Aqui pega o retorno do POST
     let userPostedQuizz = {
         id: resposta.data.id,
         key: resposta.data.key
     };
-    //Pega os dados armazenados localmente
+
     userCreatedQuizz = localStorage.getItem('userQuizzes');
     
-    //Converteu para um array
     userCreatedQuizz = JSON.parse(userCreatedQuizz); // Tá como objeto
     
-    //Push do retorno do POST
     if(userCreatedQuizz === null){
         userCreatedQuizz = [];
         userCreatedQuizz.push(userPostedQuizz);
@@ -568,10 +565,8 @@ function postQuizz(resposta){
         userCreatedQuizz.push(userPostedQuizz);
     }
     
-    //Converteu para string
     userCreatedQuizz = JSON.stringify(userCreatedQuizz); // Tá como string
     
-    //Armazenou localmente
     localStorage.setItem('userQuizzes', userCreatedQuizz);
     
     const quizzFinishedPage = document.querySelector('.quizz-finished');
@@ -586,7 +581,7 @@ function postQuizz(resposta){
             </li>
         </div>
         <button onclick="refQuizz()">Acessar Quizz</button>
-        <div><a onclick="initial()">Voltar pra home</a></div>
+        <div class="back-btn"><a onclick="initial()">Voltar pra home</a></div>
     `
 
     quizzFinishedPage.children[1].children[0].children[0].style.backgroundImage = `linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65%, #000000 100%), url(${resposta.data.image})`;

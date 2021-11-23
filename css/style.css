@@ -465,6 +465,10 @@ a {
     overflow-y: hidden;
 }
 
+.back-btn:hover {
+    cursor: pointer;
+}
+
 
 
 @media (max-width: 1100px){
